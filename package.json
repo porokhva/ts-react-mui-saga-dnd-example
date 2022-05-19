@@ -6,8 +6,8 @@
   "scripts": {
     "analyze": "ANALYZE=true yarn build",
     "dev": "vite --host",
-    "build": "tsc --noEmit && cross-env CI=false DISABLE_ESLINT_PLUGIN=true GENERATE_SOURCEMAP=false vite build",
-    "build:dev": "tsc --noEmit && cross-env CI=false DISABLE_ESLINT_PLUGIN=true MODE=development vite build",
+    "build": "tsc --noEmit &&  cross-env BASE_URL=/ts-react-mui-saga-dnd-example/ vite build",
+    "build:dev": "tsc --noEmit && cross-env MODE=development vite build",
     "serve": "vite preview",
     "lint:fix": "eslint ./src --ext .ts,.tsx --quiet --fix --ignore-path ./.eslintignore",
     "lint:format": "prettier  --loglevel warn --write \"./**/*.{js,jsx,ts,tsx,css,md,json}\" ",
@@ -88,6 +88,6 @@
     ]
   },
   "msw": {
-    "workerDirectory": "public"
+    "workerDirectory": "build"
   }
 }

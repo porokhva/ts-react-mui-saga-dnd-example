@@ -1,22 +1,14 @@
 import react from '@vitejs/plugin-react'
-import { resolve } from 'path'
 import { visualizer } from 'rollup-plugin-visualizer'
 import { UserConfig } from 'vite'
 import Checker from 'vite-plugin-checker'
 import tsconfigPaths from 'vite-tsconfig-paths'
 
 const shouldAnalyze = process.env.ANALYZE
-
+const publicUrl = '/ts-react-mui-saga-dnd-example/'
+console.log(process.env.NODE_ENV, 'process.env.NODE_ENV')
 const manualChunks = id => {
   if (id.includes('node_modules')) {
-    if (
-      id.includes('@mui/material') ||
-      id.includes('@mui/icons-material') ||
-      id.includes('@emotion/react') ||
-      id.includes('@emotion/styled')
-    ) {
-      return 'vendor_mui'
-    }
     if (id.includes('msw')) {
       return 'vendor_msw'
     }
@@ -35,6 +27,7 @@ const config: UserConfig = {
     sourcemap: !!shouldAnalyze,
     outDir: 'build'
   },
+  base: process.env.NODE_ENV !== 'production' ? '/' : publicUrl,
   plugins: [
     react(),
     tsconfigPaths(),

@@ -14,7 +14,7 @@ function* fetchLaunchesPast() {
 
     yield put(launchesActions.setListByType({ value: response.data, type: 'past' }))
   } catch (error) {
-    console.log(error, 'error')
+    console.error(error, 'error')
   } finally {
     yield put(launchesActions.setIsLoading({ value: false, type: 'past' }))
   }
@@ -26,7 +26,7 @@ function* fetchLaunchesNext() {
 
     yield put(launchesActions.setListByType({ value: response.data, type: 'next' }))
   } catch (error) {
-    console.log(error, 'error')
+    console.error(error, 'error')
   } finally {
     yield put(launchesActions.setIsLoading({ value: false, type: 'next' }))
   }
@@ -63,7 +63,7 @@ function* onChangeLaunchType({ payload }) {
 
     yield put(launchesActions.updateLaunchType(payload))
   } catch (error) {
-    console.log(error, 'error')
+    console.error(error, 'error')
   }
 }
 

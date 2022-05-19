@@ -9,29 +9,37 @@ export const history = createBrowserHistory()
 
 import { NotificationProvider } from '@component/notifier'
 
-import { worker } from '@/services/api/mocks/browser'
-
 import { App } from './App'
 
-if (import.meta.env.DEV) {
-  worker.start()
-}
-
-ReactDOM.render(
-  <StrictMode>
-    <StoreProvider>
-      <AppDndProvider>
-        <ChosenThemeProvider>
-          <ThemeProvider>
-            <NotificationProvider>
-              <Router>
-                <App />
-              </Router>
-            </NotificationProvider>
-          </ThemeProvider>
-        </ChosenThemeProvider>
-      </AppDndProvider>
-    </StoreProvider>
-  </StrictMode>,
-  document.getElementById('root')
-)
+import('@/services/api/mocks/browser')
+  .then(({ worker }) => {
+    return worker.start({
+      onUnhandledRequest: 'bypass',
+      serviceWorker: {
+        url: `${import.meta.env.BASE_URL}mockServiceWorker.js`
+      }
+    })
+  })
+  .then(() => {
+    ReactDOM.render(
+      <StrictMode>
+        <StoreProvider>
+          <AppDndProvider>
+            <ChosenThemeProvider>
+              <ThemeProvider>
+                <NotificationProvider>
+                  <Router>
+                    <App />
+                  </Router>
+                </NotificationProvider>
+              </ThemeProvider>
+            </ChosenThemeProvider>
+          </AppDndProvider>
+        </StoreProvider>
+      </StrictMode>,
+      document.getElementById('root')
+    )
+  })
+  .catch(e => {
+    console.log(e)
+  })
