@@ -15,7 +15,6 @@ const manualChunks = id => {
       id.includes('@emotion/react') ||
       id.includes('@emotion/styled')
     ) {
-      console.log(id, 'id')
       return 'vendor_mui'
     }
     if (id.includes('msw')) {
