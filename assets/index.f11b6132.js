@@ -57,4 +57,4 @@ var me=Object.defineProperty,fe=Object.defineProperties;var ge=Object.getOwnProp
       text-decoration: underline;
     }
   }
-`;Ze();on.start();et.render(n(l.exports.StrictMode,{children:n(Xt,{children:n(st,{children:n(at,{children:n(zt,{children:n(tn,{children:n(tt,{children:n(Sn,{})})})})})})})}),document.getElementById("root"));
+`;Ze();on.start({onUnhandledRequest:"bypass"}).then(()=>{et.render(n(l.exports.StrictMode,{children:n(Xt,{children:n(st,{children:n(at,{children:n(zt,{children:n(tn,{children:n(tt,{children:n(Sn,{})})})})})})})}),document.getElementById("root"))});
