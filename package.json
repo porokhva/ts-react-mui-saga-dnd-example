@@ -2,7 +2,7 @@
   "name": "ts-react-mui-saga-dnd-example",
   "version": "0.0.0",
   "license": "MIT",
-  "homepage": "https://porokhva.github.io/ts-react-mui-saga-dnd-example",
+  "homepage": "https://porokhva.github.io/ts-react-mui-saga-dnd-example/",
   "scripts": {
     "analyze": "ANALYZE=true yarn build",
     "dev": "vite --host",
