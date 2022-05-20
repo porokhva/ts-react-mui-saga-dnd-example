@@ -1,0 +1,1 @@
+import{r as o,s as e}from"./vendor_msw.f4b30b05.js";import{S as t,L as n}from"./index.0928b946.js";import"./vendor.19edfc89.js";const a=[o.post(`${t}/${n.updateOne}`,(u,r,s)=>r(s.json({ok:!0})))],p=[...a],d=e(...p);export{d as worker};
