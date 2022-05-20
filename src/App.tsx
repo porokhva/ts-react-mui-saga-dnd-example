@@ -18,6 +18,7 @@ const Root = styled('div')`
   display: flex;
   flex-direction: column;
   position: relative;
+  min-width: 1000px;
   & a {
     text-decoration: none;
     & .MuiCardHeader-title {

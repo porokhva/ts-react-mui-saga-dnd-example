@@ -2,6 +2,7 @@ import { call, put, takeLatest } from '@redux-saga/core/effects'
 import { all, take } from 'redux-saga/effects'
 
 import { launchesApiService } from '@/services/api/launches/launches.service'
+import { pushNotificationSuccess } from '@/store/helpers'
 import { LAUNCH_STATUSES } from '@/store/launches/constants'
 import { launchesActions } from '@/store/launches/slice'
 import { showModalById } from '@/store/ui'
@@ -59,6 +60,9 @@ function* onChangeLaunchType({ payload }) {
     }
     if (itemType !== newType) {
       yield call(launchesApiService.updateOne, { newType, id: itemId })
+      yield put(
+        pushNotificationSuccess({ message: `You launch type successfully changed from ${itemType} to ${newType}` })
+      )
     }
 
     yield put(launchesActions.updateLaunchType(payload))
